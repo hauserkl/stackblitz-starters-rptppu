@@ -1,19 +1,14 @@
-import { Component } from '@angular/core';
-import { bootstrapApplication } from '@angular/platform-browser';
-import 'zone.js';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
 
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  template: `
-    <h1>Hello from {{ name }}!</h1>
-    <a target="_blank" href="https://angular.dev/overview">
-      Learn more about Angular
-    </a>
-  `,
-})
-export class App {
-  name = 'Angular';
+import { environment } from './environments/environment';
+import { AppComponent } from './app/app.component';
+import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
+
+if (environment.production) {
+  enableProdMode();
 }
 
-bootstrapApplication(App);
+bootstrapApplication(AppComponent, {
+    providers: [importProvidersFrom(BrowserModule)]
+})
+  .catch(err => console.error(err));

@@ -1,0 +1,7 @@
+<h3>My To Do Tracker</h3>
+Total items: {{ getItemCount() }}
+
+<app-item
+  *ngFor='let i of itemList'
+  [item]="i">
+</app-item>
